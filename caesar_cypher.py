@@ -5,7 +5,7 @@ from typing import Callable, List
 
 POOL = printable[:-3]
 
-def caesar_cypher(cleartext: str, offset: int, pool: List[chr] = POOL) -> str:
+def caesar_cypher(cleartext: str, offset: int, pool: List[str] = POOL) -> str:
     """Encode the cleartext with the Caesar Cypher Algorithm."""
 
     return "".join(
@@ -15,7 +15,7 @@ def caesar_cypher(cleartext: str, offset: int, pool: List[chr] = POOL) -> str:
             )
         )
 
-def curried_caesar_cypher(offset: int, pool: List[chr] = POOL) -> Callable[[str], str]:
+def curried_caesar_cypher(offset: int, pool: List[str] = POOL) -> Callable[[str], str]:
     """Creates a function that encodes received cleartext with
     the Caesar Cypher Algorithm by a fixed offset.
 
