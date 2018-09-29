@@ -4,7 +4,7 @@ from typing import List
 
 POOL = string.printable[:-6] # -3 to include basic whitespace characters
 
-def create_key(size: int, pool: List[chr] = POOL) -> str:
+def create_key(size: int, pool: List[str] = POOL) -> str:
     """(int) -> str
     Returns n random chars and concatenates them.
     """
@@ -16,7 +16,7 @@ def create_key(size: int, pool: List[chr] = POOL) -> str:
 def create_keys(
     length: int,
     amount: int,
-    pool: List[chr] = POOL
+    pool: List[str] = POOL
     ) -> List[str]:
     """(x: int, y: int) -> List[str]
     return x passwords with y length.
