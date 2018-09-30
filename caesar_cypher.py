@@ -10,7 +10,7 @@ def caesar_cypher(cleartext: str, offset: int, pool: str = POOL) -> str:
 
     return "".join(
         map(
-            lambda x: POOL[(POOL.find(x) + offset) % len(POOL)],
+            lambda x: POOL[(POOL.index(x) + offset) % len(POOL)],
             cleartext
             )
         )
