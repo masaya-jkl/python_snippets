@@ -8,6 +8,18 @@ in the Digital messages subsection:
 "The hidden image is revealed by removing all but the two least significant 
 bits of each color component and a subsequent normalization."
 
+Create Image objects with PIL.Image.open(filepath or fileobject) or another factory method,
+then pass them to encode_message or extract_message. "lsb" stands for "least significant bit(s)",
+that parameter is meant to receive the value of bits in which the message is supposed to be en/decoded
+with. Use PIL.Image.save to save the result later.
+
+Note: both images need to have the same mode (grayscale, rgb, rgba, palette...), convert one of them
+if necessary.
+
+Extra: I recommend using a console/IDE which supports visualizing the images in-line. It's very handy.
+However, you can also just visualize the images as tempfiles opened with the default image viewer
+with PIL.Image.show()
+
 Created on Tue Dec 31 18:51:01 2019
 
 @author: masaya-jkl
@@ -71,9 +83,8 @@ def encode_message(cover, message, lsb, bits=8):
     Encodes the message image in the least significant bits of the cover image
     '''
     
-    layers = [
-            clear_lsb(cover, lsb),
-            normalize(message, bits, lsb)]
+    layers = [clear_lsb(cover, lsb),
+              normalize(message, bits, lsb)]
     
     return PIL.ImageChops.add_modulo(*layers)
 
